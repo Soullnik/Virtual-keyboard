@@ -95,3 +95,10 @@ function handleKeyUp(event) {
     }
   }
 }
+
+function handleKeyDown(event) {
+  event.preventDefault();
+  const keyElement = document.querySelector(`#${event.code}`);
+  if (!keyElement) return false;
+  renderChar.call(this, event, keyElement);  
+}
