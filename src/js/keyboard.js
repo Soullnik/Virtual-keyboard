@@ -52,3 +52,8 @@ function renderChar(event, keyElement) {
       break;
   }
 }
+
+const caretChage = (textArea, char) => {
+  textArea.setRangeText(char, textArea.selectionStart, textArea.selectionEnd, "end");
+  textArea.focus();
+}
