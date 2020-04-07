@@ -58,3 +58,40 @@ const caretChage = (textArea, char) => {
   textArea.setRangeText(char, textArea.selectionStart, textArea.selectionEnd, "end");
   textArea.focus();
 }
+
+function handleKeyUp(event) {
+  event.preventDefault();
+  const keyElement = document.querySelector(`#${event.code}`);
+  if (keyElement) {
+    switch (true) {
+      case (keyElement.id === 'CapsLock'):
+        if (!capsLockEnabled) {
+            keyDown.delete(event.key);
+            capsLockEnabled = true;
+          } else {
+            keyElement.classList.remove('key_down');
+            keyDown.delete(event.key);
+            capsLockEnabled = false;
+          }
+        break;
+      case (keyElement.id === 'ShiftLeft' || keyElement.id === 'ShiftRight'):
+        document.querySelectorAll('span').forEach((el) => {
+          keyElement.classList.remove('key_down');
+          if (el.classList.contains('value_hide')) {
+            el.classList.remove('value_hide')
+          } else {
+            el.classList.add('value_hide')  
+          }
+          keyDown.delete(event.key);
+        })
+      break;
+      // case (keyElement.id === 'ShiftLeft' && keyElement.id === 'Control'):
+      //     keyDown.delete(event.key);
+      // break;
+      default:
+        keyDown.delete(event.key);
+        keyElement.classList.remove('key_down');
+      break;
+    }
+  }
+}
