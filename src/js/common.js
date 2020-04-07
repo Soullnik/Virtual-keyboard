@@ -2,7 +2,7 @@ import * as renderer from './renderer';
 import * as keyboard from './keyboard';
 
 const language = {
-  language: ['en', 'ru'],
+  arrlanguage: ['en', 'ru'],
   currentLangIndex: 0,
   keyMap: {
     ru: {
@@ -138,16 +138,14 @@ const language = {
   },
 
   swithLangKey() {
-    this.currentLangIndex = (this.currentLangIndex + 1) % this.language.length;
+    this.currentLangIndex = (this.currentLangIndex + 1) % this.arrlanguage.length;
     this.setLang();
     const keyBoardContainer = document.querySelector('.kboard_container');
     renderer.renderMainLayout.call(language, keyBoardContainer);
   },
 
   setLang() {
-    console.log(window.localStorage)
     window.localStorage.setItem('language', this.currentLangIndex);
-    console.log(window.localStorage)
   },
 
   getLang() {

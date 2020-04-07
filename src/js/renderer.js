@@ -15,12 +15,11 @@ const createKey = (code, value) => {
   return keyElem;
 };
 
-function renderKeyLayout(keyMap, language, currentLangIndex) {
-  console.log(this)
+function renderKeyLayout() {
   const insertLineBreak = ['Backspace', 'Enter', 'Delete', 'ShiftRight'];
-  currentLangIndex = this.getLang();
-  const lang = language[currentLangIndex];
-  const keys = Object.entries(keyMap[lang]).map((el) => {
+  const index = this.getLang();
+  const lang = this.arrlanguage[index];
+  const keys = Object.entries(this.keyMap[lang]).map((el) => {
     const [key, value] = el;
     const keyElem = createKey(key, value, insertLineBreak);
     return keyElem;
@@ -36,7 +35,7 @@ function renderMainLayout(container) {
         <div id='main_container' class='wrapper'>
         <textarea id="text_area" class='text_area'></textarea>
         <div id="kboard_container" class='kboard_container'>
-          ${renderKeyLayout.call(this, this.keyMap, this.language, this.currentLangIndex)}
+          ${renderKeyLayout.call(this)}
         </div>
         </div>`);
       break;
@@ -45,7 +44,7 @@ function renderMainLayout(container) {
         container.removeChild(container.firstChild);
       }
       container.insertAdjacentHTML('afterbegin',
-        `${renderKeyLayout.call(this, this.keyMap, this.language, this.currentLangIndex)}`);
+        `${renderKeyLayout.call(this)}`);
       break;
     default:
       break;
