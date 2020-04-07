@@ -1,22 +1,18 @@
 .key {
   width: 40px;
   height: 40px;
-  background-color: $bgkeycolor;
+  background-color: rgba(0,0,0,0.7);
   color: white;
-  border-radius: 10px;
-  border: 0.5px solid red;
-  margin: 1px 1px;
+  border-radius: 12px;
+  margin: 3px 3px;
   cursor: pointer;
+  text-align: center;
+  padding: 10px 0px 10px 0px;
 }
 
 .key_symbol {
-
+  display: block;
 }
-
-// .key:nth-child(3n) {
-//   page-break-after: always; /* Синтаксис CSS 2.1 */
-//   break-after: always; /* Новый синтаксис */
-// }
 
 .secondary_value {
   display: block;
@@ -31,25 +27,36 @@
   border-color: black;
 }
 
-.keyboard--keys {
-  text-align: center;
+.keyboard-key--tab,
+.keyboard-key--backslash {
+  width: 60px;
 }
 
-.keyboard--key--extra-wide {
-  width: 290px;
-  height: 40px;
-}
-
-.keyboard--key-wide{
+.keyboard-key--backspace {
   width: 80px;
-  height: 40px;
 }
 
-.keyboard--key-shift {
+.keyboard-key--capslock {
+  width: 75px;
+}
+
+.keyboard-key--enter {
   width: 80px;
-  height: 40px;
+}
+
+.keyboard-key--space {
+  width: 276px;
+}
+
+.keyboard-key--shiftleft {
+  width: 80px;
+}
+
+.keyboard-key--ctrlleft {
+  width: 71px;
 }
 
 .value_hide {
   display: none;
 }
+
