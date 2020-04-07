@@ -1,11 +1,17 @@
 let keyDown = new Set(); 
 let capsLockEnabled = false;
 
+const caretSymbolAdding = (textArea, char) => {
+  textArea.setRangeText(char, textArea.selectionStart, textArea.selectionEnd, "end");
+  textArea.focus();
+}
+
 const caretSymbolRemove = (textArea, char) => {
   if (textArea.selectionStart === textArea.selectionEnd);
   textArea.setRangeText(char, textArea.selectionStart, textArea.selectionEnd, "end");
   textArea.focus();
 }
+
 function renderChar(event, keyElement) {
     const textArea = document.querySelector('#text_area');
     const spanEnabled = [...keyElement.querySelectorAll('span')]
@@ -40,28 +46,20 @@ function renderChar(event, keyElement) {
     break;
     case (keyDown.has('Tab')):
       char = '\t';
-      caretChage(textArea, char);
+      caretSymbolAdding(textArea, char);
     break;
     case (keyDown.has('Backspace')):
-      console.log(textArea.textContent.value)
-      textArea.textContent = textArea.value.slice(0, -1);
-      textArea.focus();
+      caretSymbolRemove(textArea, '');
     break;
     case (keyDown.has('Enter')):
       char = '\n';
-      caretChage(textArea, char);
+      caretSymbolAdding(textArea, char);
     break;
     default:
       keyElement.classList.add('key_down');
-      caretChage(textArea, char);
+      caretSymbolAdding(textArea, char);
       break;
   }
-}
-
-const caretChage = (textArea, char) => {
-  if (textArea.selectionStart === textArea.selectionEnd);
-  textArea.setRangeText(char, textArea.selectionStart, textArea.selectionEnd, "end");
-  textArea.focus();
 }
 
 function handleKeyUp(event) {
