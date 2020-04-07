@@ -116,16 +116,15 @@ function handleKeyDown(event) {
 }
 
 function mouseDownHandler(event) {
-  console.log(event)
-  const keyElement = event.toElement;
-  if(event.target.classList.contains('key')) {
-    event.target.classList.add('key_down');
+  const keyElement = event.currentTarget;
+  if(event.currentTarget.classList.contains('key')) {
+    event.currentTarget.classList.add('key_down');
     renderChar(event, keyElement);
   }
 }
 
 function mouseUpHandler(event) {
-  event.target.classList.remove('key_down');
+  event.currentTarget.classList.remove('key_down');
 }
 
 export {
