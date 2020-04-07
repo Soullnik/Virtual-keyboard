@@ -115,3 +115,10 @@ function mouseDownHandler(event) {
 function mouseUpHandler(event) {
   event.target.classList.remove('key_down');
 }
+
+export {
+  mouseDownHandler,
+  mouseUpHandler,
+  handleKeyDown,
+  handleKeyUp,
+}
