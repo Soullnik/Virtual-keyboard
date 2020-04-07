@@ -1,0 +1,55 @@
+.key {
+  width: 40px;
+  height: 40px;
+  background-color: $bgkeycolor;
+  color: white;
+  border-radius: 10px;
+  border: 0.5px solid red;
+  margin: 1px 1px;
+  cursor: pointer;
+}
+
+.key_symbol {
+
+}
+
+// .key:nth-child(3n) {
+//   page-break-after: always; /* Синтаксис CSS 2.1 */
+//   break-after: always; /* Новый синтаксис */
+// }
+
+.secondary_value {
+  display: block;
+}
+
+.primary_value {
+  display: block;
+}
+
+.key_down {
+  background-color: red;
+  border-color: black;
+}
+
+.keyboard--keys {
+  text-align: center;
+}
+
+.keyboard--key--extra-wide {
+  width: 290px;
+  height: 40px;
+}
+
+.keyboard--key-wide{
+  width: 80px;
+  height: 40px;
+}
+
+.keyboard--key-shift {
+  width: 80px;
+  height: 40px;
+}
+
+.value_hide {
+  display: none;
+}
