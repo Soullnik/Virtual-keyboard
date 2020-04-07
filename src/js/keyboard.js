@@ -6,9 +6,14 @@ function caretSymbolAdding(textArea, char) {
   textArea.focus();
 }
 
-const caretSymbolRemove = (textArea, char) => {
-  if (textArea.selectionStart === textArea.selectionEnd);
-  textArea.setRangeText(char, textArea.selectionStart, textArea.selectionEnd, "end");
+function caretSymbolRemove(textArea, char, translation) {
+  if (textArea.selectionStart === textArea.selectionEnd) {
+    const start = Math.min(textArea.selectionStart, Math.max(0, textArea.selectionStart + translation));
+    const end = Math.max(textArea.selectionEnd, textArea.selectionStart + translation);
+    textArea.setRangeText(char, start, end, 'end');
+  } else {
+    textArea.setRangeText('', textArea.selectionStart, textArea.selectionEnd, "end");
+  }
   textArea.focus();
 }
 
@@ -49,7 +54,9 @@ function renderChar(event, keyElement) {
       caretSymbolAdding(textArea, char);
     break;
     case (keyDown.has('Backspace')):
-      caretSymbolRemove(textArea, '');
+      char = '';
+      const translation = -1;
+      caretSymbolRemove(textArea, char, translation);
     break;
     case (keyDown.has('Enter')):
       char = '\n';
