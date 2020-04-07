@@ -1,8 +1,8 @@
 let keyDown = new Set(); 
 let capsLockEnabled = false;
 
-const caretSymbolAdding = (textArea, char) => {
-  textArea.setRangeText(char, textArea.selectionStart, textArea.selectionEnd, "end");
+function caretSymbolAdding(textArea, char) {
+  textArea.setRangeText(char, textArea.selectionStart, textArea.selectionEnd, 'end');
   textArea.focus();
 }
 
