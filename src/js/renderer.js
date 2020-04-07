@@ -1,4 +1,4 @@
-const createKey = (code, value, insertLineBreak) => {
+const createKey = (code, value) => {
   let keyElem = '';
   if (code.indexOf('Key') !== -1) {
     keyElem = `<div id='${code}' class='key key_symbol'>
@@ -28,28 +28,29 @@ function renderKeyLayout(keyMap, language, currentLangIndex) {
 }
 
 function renderMainLayout(container) {
-  console.log(container.id === 'body');
   switch (container.id) {
-    case 'body' :
-      container.insertAdjacentHTML("afterbegin", `
+    case 'body':
+      container.insertAdjacentHTML('afterbegin', `
         <div id='main_container' class='wrapper'>
         <textarea id="text_area" class='text_area'></textarea>
         <div id="kboard_container" class='kboard_container'>
           ${renderKeyLayout(this.keyMap, this.language, this.currentLangIndex)}
         </div>
-        </div>` 
-      );
+        </div>`);
       break;
     case 'kboard_container':
-      container.innerHTML = '';
-      container.insertAdjacentHTML("afterbegin", 
-      `${renderKeyLayout(this.keyMap, this.language, this.currentLangIndex)}` 
-      );
-    break;
+      while (container.firstChild) {
+        container.removeChild(container.firstChild);
+      }
+      container.insertAdjacentHTML('afterbegin',
+        `${renderKeyLayout(this.keyMap, this.language, this.currentLangIndex)}`);
+      break;
+    default:
+      break;
   }
 }
 
 export {
   renderMainLayout,
   renderKeyLayout,
-}
+};
