@@ -1,3 +1,6 @@
+import * as renderer from "./renderer"
+import * as keyboard from "./keyboard"
+
 const language = {
     language: ['en', 'ru'],
     currentLangIndex: 0,
@@ -150,3 +153,15 @@ const language = {
         return (langIndex || 0);
     },
 }
+
+const body = document.querySelector('body');
+body.id = 'body';
+window.addEventListener('load', renderer.renderMainLayout.call(language, body));
+const key = document.querySelectorAll('.key'); 
+window.addEventListener('keydown', keyboard.handleKeyDown.bind(language));
+window.addEventListener('keyup', keyboard.handleKeyUp);
+key.forEach((el) => {
+    el.addEventListener('mousedown', keyboard.mouseDownHandler);
+    el.addEventListener('mouseup', keyboard.mouseUpHandler);
+    el.addEventListener('mouseleave', keyboard.mouseUpHandler);
+});
