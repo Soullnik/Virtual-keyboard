@@ -4,9 +4,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (env, options) => {
   const config = {
-    entry: ['./src/index.js', './src/sass/style.scss'],
+    entry: ['./src/app.js', './src/main.scss'],
     output: {
-      filename: 'main.js',
+      filename: 'bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
     module: {
@@ -20,6 +20,10 @@ module.exports = (env, options) => {
           ],
         },
       ],
+    },
+    devServer: {
+      inline:true,
+      port: 3000
     },
     plugins: [new HtmlWebpackPlugin(), new MiniCssExtractPlugin()],
   };
