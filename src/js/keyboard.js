@@ -95,9 +95,7 @@ function handleKeyUp(event) {
           keyDown.delete(event.key);
         })
       break;
-      // case (keyElement.id === 'ShiftLeft' && keyElement.id === 'Control'):
-      //     keyDown.delete(event.key);
-      // break;
+
       default:
         keyDown.delete(event.key);
         keyElement.classList.remove('key_down');
