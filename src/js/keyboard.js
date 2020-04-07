@@ -39,7 +39,7 @@ function renderChar(event, keyElement) {
         }
       })
     break;
-    case (keyDown.has('Shift')):
+    case (keyDown.has('Shift') && keyDown.size < 2):
       keyElement.classList.add('key_down');
       document.querySelectorAll('span').forEach((el) => {
         if (el.classList.contains('value_hide')) {
