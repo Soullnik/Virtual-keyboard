@@ -145,7 +145,9 @@ const language = {
   },
 
   setLang() {
+    console.log(window.localStorage)
     window.localStorage.setItem('language', this.currentLangIndex);
+    console.log(window.localStorage)
   },
 
   getLang() {
