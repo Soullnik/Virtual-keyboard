@@ -1,5 +1,5 @@
 const createKey = (code, value, classList) => {
-  const key = 'key'
+  const key = 'key';
   let keyElem = '';
   if (code.indexOf('Key') !== -1) {
     keyElem = `<div id='${code}' class='key key_symbol'>
@@ -12,7 +12,7 @@ const createKey = (code, value, classList) => {
     <span id='secondary' class='secondary_value value_hide'>${(value[1]) ? value[1] : value[0]}</span>
     </div>`;
   } else {
-      keyElem = `<div id='${code}' class=${key}>
+    keyElem = `<div id='${code}' class=${key}>
       <span id='primary' class='primary_value'>${value[0]}</span>
       <span id='secondary' class='secondary_value value_hide'>${(value[1]) ? value[1] : value[0]}</span>
     </div>`;
@@ -23,7 +23,7 @@ const createKey = (code, value, classList) => {
 
 function renderKeyLayout() {
   const classList = {
-    Backspace: 'keyboard-key--backspace', 
+    Backspace: 'keyboard-key--backspace',
     Enter: 'keyboard-key--enter',
     ShiftLeft: 'keyboard-key--shiftleft',
     Tab: 'keyboard-key--tab',
