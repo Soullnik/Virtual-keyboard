@@ -1,6 +1,11 @@
 let keyDown = new Set(); 
 let capsLockEnabled = false;
 
+const caretSymbolRemove = (textArea, char) => {
+  if (textArea.selectionStart === textArea.selectionEnd);
+  textArea.setRangeText(char, textArea.selectionStart, textArea.selectionEnd, "end");
+  textArea.focus();
+}
 function renderChar(event, keyElement) {
     const textArea = document.querySelector('#text_area');
     const spanEnabled = [...keyElement.querySelectorAll('span')]
