@@ -1,5 +1,6 @@
 let keyDown = new Set(); 
 let capsLockEnabled = false;
+let newLayout = 0;
 
 function caretSymbolAdding(textArea, char) {
   textArea.setRangeText(char, textArea.selectionStart, textArea.selectionEnd, 'end');
@@ -25,6 +26,7 @@ function renderChar(event, keyElement) {
   keyDown.add(event.key);
   switch (true) {
     case (keyDown.has('Shift') && keyDown.has('Control')):
+      newLayout = 1;
       this.swithLangKey();
       break;
     case (keyDown.has('CapsLock')):
@@ -40,6 +42,7 @@ function renderChar(event, keyElement) {
       })
     break;
     case (keyDown.has('Shift') && keyDown.size < 2):
+      newLayout = 0;
       keyElement.classList.add('key_down');
       document.querySelectorAll('span').forEach((el) => {
         if (el.classList.contains('value_hide')) {
@@ -70,6 +73,7 @@ function renderChar(event, keyElement) {
 }
 
 function handleKeyUp(event) {
+  console.log(newLayout)
   event.preventDefault();
   const keyElement = document.querySelector(`#${event.code}`);
   if (keyElement) {
@@ -84,7 +88,7 @@ function handleKeyUp(event) {
             capsLockEnabled = false;
           }
         break;
-      case (keyElement.id === 'ShiftLeft' || keyElement.id === 'ShiftRight'):
+      case ((keyElement.id === 'ShiftLeft' || keyElement.id === 'ShiftRight') && newLayout === 0):
         document.querySelectorAll('span').forEach((el) => {
           keyElement.classList.remove('key_down');
           if (el.classList.contains('value_hide')) {
