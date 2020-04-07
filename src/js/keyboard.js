@@ -102,3 +102,16 @@ function handleKeyDown(event) {
   if (!keyElement) return false;
   renderChar.call(this, event, keyElement);  
 }
+
+function mouseDownHandler(event) {
+  console.log(event)
+  const keyElement = event.toElement;
+  if(event.target.classList.contains('key')) {
+    event.target.classList.add('key_down');
+    renderChar(event, keyElement);
+  }
+}
+
+function mouseUpHandler(event) {
+  event.target.classList.remove('key_down');
+}
